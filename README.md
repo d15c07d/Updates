@@ -17,7 +17,7 @@ Easily post news, patch notes, or changelogs and ensure every player stays infor
 - **Configurable command hooks:** Run one or more server commands automatically when an update is posted (great for Discord integrations).
 - **Player data (seen updates, toggle state) stored per-UUID** in a separate file.
 - **Updates stored in their own YAML file.**
-- **Clean, modular codebase** for easy maintenance and extension.
+- **Clean, and modular plugin, feel free to fork and expand as you like!**
 
 ---
 

@@ -1,0 +1,35 @@
+#
+#    $$\   $$\ $$$$$$$\  $$$$$$$\   $$$$$$\ $$$$$$$$\ $$$$$$$$\  $$$$$$\
+#    $$ |  $$ |$$  __$$\ $$  __$$\ $$  __$$\\__$$  __|$$  _____|$$  __$$\
+#    $$ |  $$ |$$ |  $$ |$$ |  $$ |$$ /  $$ |  $$ |   $$ |      $$ /  \__|
+#    $$ |  $$ |$$$$$$$  |$$ |  $$ |$$$$$$$$ |  $$ |   $$$$$\    \$$$$$$\
+#    $$ |  $$ |$$  ____/ $$ |  $$ |$$  __$$ |  $$ |   $$  __|    \____$$\
+#    $$ |  $$ |$$ |      $$ |  $$ |$$ |  $$ |  $$ |   $$ |      $$\   $$ |
+#    \$$$$$$  |$$ |      $$$$$$$  |$$ |  $$ |  $$ |   $$$$$$$$\ \$$$$$$  |
+#    \______/ \__|      \_______/ \__|  \__|  \__|   \________| \______/
+#
+#    Updates - Version 1.0.0 by d15c07d.
+#
+#    https://github.com/d15c07d/updates
+#
+#
+# Placeholders:
+#
+# {message} — The content of the posted update (with line breaks replaced by spaces).
+# {author} — The name of the player (or console) who posted the update.
+
+updates-per-page: 5
+
+messages:
+  no-permission: "&cYou do not have permission."
+  cleared: "&aAll updates cleared."
+  update-posted: "&aUpdate posted."
+  join-unread: "<yellow>You have <green>{amount}</green> unread update(s)! Do <white>/updates</white>."
+  updates-header: "<gold>--- Updates (<white>{page}</white> of <white>{total}</white>) ---"
+  update-format: "<gray>#<white>{number}</white> <gray>by <green>{author}</green>:<reset>\n<white>{message}</white>"
+  toggle-on: "&aYou will no longer see unread join messages."
+  toggle-off: "&cYou will now see unread join messages."
+
+on-update-commands:
+  - "yourcommand {message}"
+  - "yourcommand {author}"

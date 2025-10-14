@@ -1,0 +1,15 @@
+name: Updates
+version: 1.0.0
+main: me.d15c07d.updates.UpdatesPlugin
+api-version: 1.21
+commands:
+  updates:
+    description:
+    usage: /updates [help|clear|toggle]
+  update:
+    description:
+      usage: /update <message>
+permissions:
+  updates.admin:
+    description: Allows admin access to all updates commands.
+    default: op

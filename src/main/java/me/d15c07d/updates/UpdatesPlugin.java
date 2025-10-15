@@ -14,7 +14,7 @@ public class UpdatesPlugin extends JavaPlugin {
 
     @Override
     public void onEnable() {
-        getLogger().info("Enabling Updates v1.0.0 by d15c07d");
+        getLogger().info("Enabling Updates v1.0.1 by d15c07d");
         saveDefaultConfig();
         updateManager = new UpdateManager(this);
         playerDataManager = new PlayerDataManager(this);

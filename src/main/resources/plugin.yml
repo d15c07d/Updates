@@ -1,5 +1,5 @@
 name: Updates
-version: 1.0.0
+version: 1.0.1
 main: me.d15c07d.updates.UpdatesPlugin
 api-version: 1.21
 commands:

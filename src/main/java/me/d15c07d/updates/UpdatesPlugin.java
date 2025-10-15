@@ -2,6 +2,7 @@ package me.d15c07d.updates;
 
 import me.d15c07d.updates.commands.UpdateCommand;
 import me.d15c07d.updates.commands.UpdatesCommand;
+import me.d15c07d.updates.commands.UpdatesTabCompleter;
 import me.d15c07d.updates.listeners.PlayerJoinListener;
 import me.d15c07d.updates.data.PlayerDataManager;
 import me.d15c07d.updates.data.UpdateManager;
@@ -13,12 +14,13 @@ public class UpdatesPlugin extends JavaPlugin {
 
     @Override
     public void onEnable() {
-        getLogger().info("Updates by d15c07d");
+        getLogger().info("Enabling Updates v1.0.0 by d15c07d");
         saveDefaultConfig();
         updateManager = new UpdateManager(this);
         playerDataManager = new PlayerDataManager(this);
 
         getCommand("updates").setExecutor(new UpdatesCommand(this));
+        getCommand("updates").setTabCompleter(new UpdatesTabCompleter());
         getCommand("update").setExecutor(new UpdateCommand(this));
 
         getServer().getPluginManager().registerEvents(new PlayerJoinListener(this), this);

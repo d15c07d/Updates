@@ -3,7 +3,9 @@ package me.d15c07d.updates.commands;
 import me.d15c07d.updates.UpdatesPlugin;
 import me.d15c07d.updates.util.ColorUtil;
 import org.bukkit.Bukkit;
-import org.bukkit.command.*;
+import org.bukkit.command.Command;
+import org.bukkit.command.CommandExecutor;
+import org.bukkit.command.CommandSender;
 
 public class UpdateCommand implements CommandExecutor {
     private final UpdatesPlugin plugin;
@@ -15,17 +17,16 @@ public class UpdateCommand implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
         if (!sender.hasPermission("updates.admin")) {
-            sender.sendMessage(ColorUtil.color(plugin.getConfig().getString("messages.no-permission")));
+            ColorUtil.send(sender, plugin.getConfig().getString("messages.no-permission"));
             return true;
         }
         if (args.length == 0) {
-            sender.sendMessage(ColorUtil.color("&cUsage: /update <message>"));
+            ColorUtil.send(sender, plugin.getConfig().getString("messages.update-usage"));
             return true;
         }
         String msg = String.join(" ", args).replace("%nl%", "\n").replace("\\n", "\n");
         plugin.getUpdateManager().addUpdate(msg, sender.getName());
-        sender.sendMessage(ColorUtil.color(plugin.getConfig().getString("messages.update-posted")));
-        // Run configured commands
+        ColorUtil.send(sender, plugin.getConfig().getString("messages.update-posted"));
         for (String cmdStr : plugin.getConfig().getStringList("on-update-commands")) {
             Bukkit.dispatchCommand(Bukkit.getConsoleSender(), cmdStr.replace("{message}", msg).replace("{author}", sender.getName()));
         }

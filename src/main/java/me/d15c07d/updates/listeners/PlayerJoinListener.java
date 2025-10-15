@@ -3,7 +3,8 @@ package me.d15c07d.updates.listeners;
 import me.d15c07d.updates.UpdatesPlugin;
 import me.d15c07d.updates.util.ColorUtil;
 import org.bukkit.entity.Player;
-import org.bukkit.event.*;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 
 public class PlayerJoinListener implements Listener {
@@ -21,7 +22,7 @@ public class PlayerJoinListener implements Listener {
         if (unread > 0) {
             String msg = plugin.getConfig().getString("messages.join-unread")
                     .replace("{amount}", String.valueOf(unread));
-            player.sendMessage(ColorUtil.color(msg));
+            ColorUtil.send(player, msg);
         }
     }
 }

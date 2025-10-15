@@ -4,6 +4,7 @@ import me.d15c07d.updates.UpdatesPlugin;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.event.ClickEvent;
 import org.bukkit.command.CommandSender;
+import org.bukkit.entity.Player;
 
 import java.util.List;
 import java.util.Map;
@@ -17,9 +18,6 @@ public class UpdateMessageUtil {
         if (pages == 0) pages = 1;
         if (page < 1 || page > pages) page = 1;
 
-        int start = (page - 1) * perPage;
-        int end = Math.min(start + perPage, total);
-
         String header = plugin.getConfig().getString("messages.updates-header")
                 .replace("{page}", page + "/" + pages)
                 .replace("{total}", String.valueOf(total));
@@ -28,7 +26,7 @@ public class UpdateMessageUtil {
         if (total == 0) {
             ColorUtil.send(sender, plugin.getConfig().getString("messages.no-updates", "&7No updates to show."));
         } else {
-            for (int i = start; i < end; i++) {
+            for (int i = (page - 1) * perPage; i < Math.min((page - 1) * perPage + perPage, total); i++) {
                 Map<String, Object> update = updates.get(i);
                 String msg = (String) update.get("message");
                 String author = (String) update.get("author");
@@ -49,7 +47,7 @@ public class UpdateMessageUtil {
             nav = nav.append(Component.text(" | Page " + page + "/" + pages + " | "));
             if (page < pages)
                 nav = nav.append(Component.text("Next >>").clickEvent(ClickEvent.runCommand("/updates " + (page + 1))));
-            if (sender instanceof org.bukkit.entity.Player player) {
+            if (sender instanceof Player player) {
                 player.sendMessage(nav);
             } else {
                 sender.sendMessage(net.kyori.adventure.text.serializer.legacy.LegacyComponentSerializer.legacySection().serialize(nav));
@@ -57,13 +55,11 @@ public class UpdateMessageUtil {
         }
     }
 
-    public static void sendHelp(CommandSender sender, boolean admin) {
-        ColorUtil.send(sender, "&e/updates &7- Show updates");
-        ColorUtil.send(sender, "&e/updates help &7- Show this panel");
-        ColorUtil.send(sender, "&e/updates toggle &7- Toggle unread join msg");
+    public static void sendHelp(CommandSender sender, boolean admin, UpdatesPlugin plugin) {
+        ColorUtil.send(sender, plugin.getConfig().getString("messages.help-header"));
+        ColorUtil.send(sender, plugin.getConfig().getString("messages.help-player"));
         if (admin) {
-            ColorUtil.send(sender, "&c/update <msg> &7- Post an update");
-            ColorUtil.send(sender, "&c/updates clear &7- Clear all updates");
+            ColorUtil.send(sender, plugin.getConfig().getString("messages.help-admin"));
         }
     }
 }

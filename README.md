@@ -47,14 +47,22 @@ messages:
   no-permission: "&cYou do not have permission."
   cleared: "&aAll updates cleared."
   update-posted: "&aUpdate posted."
+  update-usage: "&eUsage: /update <message>"
   join-unread: "<yellow>You have <green>{amount}</green> unread update(s)! Do <white>/updates</white>."
   updates-header: "<gold>--- Updates (<white>{page}</white> of <white>{total}</white>) ---"
   update-format: "<gray>#<white>{number}</white> <gray>by <green>{author}</green>:<reset>\n<white>{message}</white>"
   toggle-on: "&aYou will no longer see unread join messages."
   toggle-off: "&cYou will now see unread join messages."
   no-updates: "&7No updates to show."
+  player-only: "&cThis command can only be used by players."
+  unknown-subcommand: "&cInvalid subcommand or page number. Do /updates help"
+  help-header: "<gold>--- Updates Help ---"
+  help-player: "&e/updates &7- Show updates\n&e/updates help &7- Show this panel\n&e/updates toggle &7- Toggle unread join msg"
+  help-admin: "&c/update <msg> &7- Post an update\n&c/updates clear &7- Clear all updates"
 
-on-update-commands: []
+on-update-commands:
+  - "yourcommand {message}"
+  - "yourcommand {author}"
 ```
 
 #### **on-update-commands**
